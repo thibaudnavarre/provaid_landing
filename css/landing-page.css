@@ -1,0 +1,212 @@
+/*!
+ * Start Bootstrap - Landing Page v5.0.1 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+h1,h3{
+  font-weight: 300;
+}
+h2{
+  font-size: 1.75rem;
+}
+i{
+  font-style: normal;
+  color:#8BC34A;
+}
+
+nav{
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+  background: #00000000;
+}
+nav a{
+  color: #FFF;
+  opacity: 0.6;
+}
+
+nav a:hover{
+  color: #FFF;
+  text-decoration: underline;
+  opacity: 1;
+}
+nav .active{
+  opacity: 1;
+}
+nav p{
+  padding-top: 5px;
+}
+.navbar-brand{
+  font-size: 1.4rem !important;
+}
+.navbar-brand a, .navbar-brand a:hover{
+  opacity: 1 !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.transparent{
+  opacity: 0;
+}
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  height: 100vh;
+  min-height: 670px;
+}
+
+
+header h1 {
+  font-size: 2rem;
+}
+
+header .cta{
+  margin-top: 3rem;
+}
+header .cta > div{
+  margin-top: 1rem;
+}
+header .head-description {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 14rem;    
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+  header .head-description {
+    font-size: 1.5rem;
+  }
+}
+
+div.change-role{
+  margin-top: 1rem;
+}
+div.change-role a{
+  text-decoration: underline;
+  color: #8BC34A;  
+}
+
+.btn-primary{
+  color: #FFF !important;
+  background-color: #8BC34A;
+  border-color: #8BC34A;
+  white-space: nowrap;
+}
+.btn-primary:hover{
+  background-color: #689f38;
+  border-color: #689f38;
+}
+.btn-primary:active{
+  background-color: #9ccc65 !important;
+  border-color: #9ccc65 !important;
+}
+.btn-primary.focus, .btn-primary:focus {
+  box-shadow: none !important;
+}
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+  max-width: 12rem;
+  -webkit-box-shadow: 0px 5px 5px 0px #adb5bd;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/map-space_original.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+.form-control:focus{
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+footer a, footer a:hover {
+  color: #333;
+
+}
