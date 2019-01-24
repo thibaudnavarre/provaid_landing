@@ -30,7 +30,7 @@
 
 
     <!-- Masthead -->
-    <header class="masthead text-white text-center" style="background-image:url('./assets/img/clocks.jpg');">
+    <header class="masthead text-white text-center" style="background-image:url('./assets/img/school_bus.jpg');">
           <!-- Navigation -->
       <nav class="navbar navbar-dark static-top">
         <div class="container">
@@ -50,7 +50,7 @@
         </div>
         <div class="row cta">
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
+                <form id="contact-form" method="POST" action="contact.php" role="form">
                     <div class="form-row">
                     <div class="col-12 col-md-9 mb-2 mb-md-0">
                         <input type="email" class="form-control form-control-lg" placeholder="Email...">
@@ -70,8 +70,66 @@
       </div>
     </header>
 
-   
-
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto"></i>
+              </div>
+              <h2>International</h2>
+              <p class="lead mb-0">Trouvez des missions adaptées à vos compétences dans le monde entier.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-layers m-auto"></i>
+              </div>
+              <h2>Centralisé</h2>
+              <p class="lead mb-0">Nous avons pour mission de recenser l'ensemble des missions humanitaires.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto"></i>
+              </div>
+              <h2>Sécurisé</h2>
+              <p class="lead mb-0">Nous vous garantissons des missions auprès d'ONG reconnues pour la qualité de leur travail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Image Showcases -->
+    <section class="showcase">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('./assets/img/india.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Une plateforme internationale</h2>
+            <p class="lead mb-0">Parce que la solidarité ne doit pas connaître de frontière, nous opérons dans le monde entier pour mettre en relation des volontaires et des associations. </p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('./assets/img/desert.jpg');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>Des ONG locales</h2>
+            <p class="lead mb-0">Afin d'agir au plus près des populations concernés, nous vous mettons en relation avec des ONG et des associations qui connaissent parfaitement le contexte local.</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('./assets/img/meditation.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Des volontaires sérieux et déterminés</h2>
+            <p class="lead mb-0">Pour optimiser l'efficacité des missions, nous nous assurons que chaque volontaire est sérieux et motivé. </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
