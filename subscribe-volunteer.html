@@ -16,8 +16,6 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
@@ -30,7 +28,7 @@
 
 
     <!-- Masthead -->
-    <header class="masthead text-white text-center" style="background-image:url('./assets/img/school_bus.jpg');">
+    <header class="masthead text-white text-center" style="background-image:url('./assets/img/meditation-dark.jpg');">
           <!-- Navigation -->
       <nav class="navbar navbar-dark static-top">
         <div class="container">
@@ -44,24 +42,35 @@
             <h1 class="mb-5">Vous êtes volontaire pour une mission humanitaire ?</h1>
             <p class="head-description">
               Notre plateforme sera bientôt prête !
-              Inscrivez-vous pour faire parti des premiers prov<i>a</i>iders
+              Inscrivez-vous pour faire partie des premiers prov<i>a</i>iders
             </p>
           </div>
         </div>
+        
         <div class="row cta">
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form id="contact-form" method="POST" action="contact.php" role="form">
-                    <div class="form-row">
-                    <div class="col-12 col-md-9 mb-2 mb-md-0">
-                        <label for="email" style="display:none"></label>
-                        <input id="email" name="email" type="email" class="form-control form-control-lg" placeholder="Email...">
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <button type="submit" class="btn btn-block btn-lg btn-primary">S'incrire</button>
-                    </div>
-                    </div>
-                </form>
-            </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"> 
+            <form id="contact-form" method="POST" action="contact.php" role="form">
+              <div class="toasts"></div>
+              <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                    
+                    <label for="email" style="display:none"></label>
+                    <input id="email" name="email" type="email" class="form-control form-control-lg" placeholder="Email...">
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="submit" class="btn btn-block btn-lg btn-primary">S'incrire</button>
+                </div>
+                <!--<script src="https://www.google.com/recaptcha/api.js?render=6LfgWo4UAAAAAKlid4vL_EI7ola_axsb7bIHR5Jx"></script>
+                <script>
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LfgWo4UAAAAAKlid4vL_EI7ola_axsb7bIHR5Jx', {action: 'homepage'}).then(function(token) {
+
+                    });
+                });
+                </script>-->
+              </div>
+            </form>
+          </div>
         </div>
         <div class="row change-role">
             <div class="col-md-10 mx-auto">
@@ -78,27 +87,39 @@
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-screen-desktop m-auto"></i>
+                  <img 
+                  src="./assets/icons/world.svg" 
+                  alt="International"
+                  height="87px"
+                  width="100px" />
               </div>
-              <h2>International</h2>
+              <h2>Internationale</h2>
               <p class="lead mb-0">Trouvez des missions adaptées à vos compétences dans le monde entier.</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-layers m-auto"></i>
+                  <img 
+                  src="./assets/icons/network.svg" 
+                  alt="Centralisé"
+                  height="87px"
+                  width="100px" />
               </div>
-              <h2>Centralisé</h2>
+              <h3>Centralisée</h3>
               <p class="lead mb-0">Nous avons pour mission de recenser l'ensemble des missions humanitaires.</p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto"></i>
+                  <img 
+                  src="./assets/icons/safe.svg" 
+                  alt="Sécurisé"
+                  height="87px"
+                  width="100px" />
               </div>
-              <h2>Sécurisé</h2>
+              <h3>Sécurisée</h3>
               <p class="lead mb-0">Nous vous garantissons des missions auprès d'ONG reconnues pour la qualité de leur travail.</p>
             </div>
           </div>
@@ -116,16 +137,16 @@
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('./assets/img/desert.jpg');"></div>
+            <div class="col-lg-6 text-white showcase-img" style="background-image: url('./assets/img/desert.jpg');"></div>
           <div class="col-lg-6 my-auto showcase-text">
             <h2>Des ONG locales</h2>
-            <p class="lead mb-0">Afin d'agir au plus près des populations concernés, nous vous mettons en relation avec des ONG et des associations qui connaissent parfaitement le contexte local.</p>
+            <p class="lead mb-0">Afin d'agir au plus près des populations concernées, nous vous mettons en relation avec des ONG et des associations qui connaissent parfaitement le contexte local.</p>
           </div>
         </div>
         <div class="row no-gutters">
           <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('./assets/img/meditation.jpg');"></div>
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Des volontaires sérieux et déterminés</h2>
+            <h2>Des volontaires sérieux et impliqués</h2>
             <p class="lead mb-0">Pour optimiser l'efficacité des missions, nous nous assurons que chaque volontaire est sérieux et motivé. </p>
           </div>
         </div>

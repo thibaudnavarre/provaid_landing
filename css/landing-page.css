@@ -18,7 +18,7 @@ h6 {
   font-weight: 400;
 }
 
-h1,h3{
+h1{
   font-weight: 300;
 }
 h2{
@@ -100,6 +100,15 @@ header .head-description {
   }
 }
 
+form .toasts{
+  position: absolute;
+  top: -59px;
+  left: 0px;
+  right: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 div.change-role{
   margin-top: 1rem;
 }
@@ -162,6 +171,13 @@ div.change-role a{
   font-size: 5rem;
 }
 
+.features-icons-icon{
+  justify-content: center;
+}
+
+.container-fluid p {
+  text-align: justify;
+}
 .testimonials {
   padding-top: 7rem;
   padding-bottom: 7rem;
@@ -210,3 +226,4 @@ footer a, footer a:hover {
   color: #333;
 
 }
+

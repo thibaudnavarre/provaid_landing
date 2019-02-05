@@ -1,7 +1,7 @@
 $(function () {
     // when the form is submitted
     $('#contact-form').on('submit', function (e) {
-
+        console.log("script called !");
         // if the validator does not prevent form submit
     
         var url = "../contact.php";
@@ -16,11 +16,12 @@ $(function () {
                 
                 // response_code = html response that contact.php returns
                 if (response_code == 200) {
-                    var messageText = "Message envoyé !";
-                    var messageAlert = "alert-done";
+                    
+                    var messageText = "Inscription enregistrée !";
+                    var messageAlert = "alert-success";
                 }
                 else{
-                    var messageText = "Erreur lors de l'envoi du message !";
+                    var messageText = "Une erreur est survenue !";
                     var messageAlert = "alert-error";
                 }               
                  
@@ -34,6 +35,7 @@ $(function () {
                 
             }
         });
+        console.log("form submitted !");
         return false;
         
     })

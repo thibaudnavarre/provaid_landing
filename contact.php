@@ -27,8 +27,8 @@ $messageBody = $_POST["email"];
 // smtp credentials and server
 
 $smtpHost = 'smtp.gmail.com';
-$smtpUsername = 'louis.brillet@gmail.com';
-$smtpPassword = '316594-LBlb';
+$smtpUsername = 'contact.provaid@gmail.com';
+$smtpPassword = 'Canaries-2018!';
 
 $mail = new PHPMailer(true);
 try{    
@@ -48,9 +48,9 @@ try{
     $mail->Username = $smtpUsername;
     $mail->Password = $smtpPassword;
 
-    $mail->setFrom('louis.brillet@gmail.com','Provaid.com'); // Emetteur
-    $mail->addAddress('louis.brillet@gmail.com'); // destinataire
-    $mail->Subject = 'Provaider';
+    $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
+    $mail->addAddress('contact.provaid@gmail.com'); // destinataire
+    $mail->Subject = 'Provaid new volunteer';
     $mail->Body = $messageBody;
 
     $mail->send();
