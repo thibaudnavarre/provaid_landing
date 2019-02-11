@@ -19,22 +19,19 @@ php composer.phar require phpmailer/phpmailer
 
 require 'vendor/autoload.php';
 
-$confirmationEmail = include('./assets/emailTemplates/emailTemplates.inc.php');
+$confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html');
 
 
 // an email address that will be in the From field of the email.
-$connection = new MongoClient( "mongodb://provaid-admin:vykXen-vodpaf-xakve1@ds213665.mlab.com:13665/provaid" );
+/*$connection = new MongoClient( "mongodb://provaid-admin:vykXen-vodpaf-xakve1@ds213665.mlab.com:13665/provaid" );
 $ngoCollection = $connection->ngo;
-$volCollection = $connection->volunteers;
+$volCollection = $connection->volunteers;*/
 
 $subscriptionType = $_POST["subscriptionType"];
 $subscriptionEmail = $_POST["email"];
 
 $hashedEmail = hash('sha256', $subscriptionEmail);
-<<<<<<< HEAD
 $messageBody = $confirmationEmail;
-=======
->>>>>>> 0c7c51aeedfb4f81d09d970972b4fe72bbd341dd
 // smtp credentials and server
 
 $smtpHost = 'smtp.gmail.com';
@@ -49,9 +46,9 @@ $document = array(
 $mail = new PHPMailer(true);
 
 try{
-    if($subscriptionType == "NGO") {
+    /*if($subscriptionType == "NGO") {
         $ngoCollection->insert($document);
-    } else { $volCollection->insert($document); }
+    } else { $volCollection->insert($document); }*/
 
     $mail->isSMTP();
 
@@ -73,7 +70,7 @@ try{
     $mail->addAddress('contact.provaid@gmail.com'); // destinataire
     $mail->Subject = 'New Provaid subscription';
     $mail->Body = $messageBody;
-
+    $mail->isHTML(true);
     $mail->send();
     echo '200';
 

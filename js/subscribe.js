@@ -16,11 +16,12 @@ $(function () {
                 
                 // response_code = html response that contact.php returns
                 if (response_code == 200) {
-                    
+                    console.log("Subscription is a success !");
                     var messageText = "Inscription enregistrée !";
                     var messageAlert = "alert-success";
                 }
                 else{
+                    console.log("Subscription error : code : " + response_code);
                     var messageText = "Une erreur est survenue !";
                     var messageAlert = "alert-error";
                 }               
