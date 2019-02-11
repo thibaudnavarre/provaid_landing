@@ -4,7 +4,7 @@ $(function () {
         console.log("script called !");
         // if the validator does not prevent form submit
     
-        var url = "../contact.php";
+        var url = "../subscribe.php";
 
         // POST values in the background the the script URL
         $.ajax({
