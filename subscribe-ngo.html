@@ -50,12 +50,13 @@
         </div>
         <div class="row cta">
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form id="contact-form" method="POST" action="contact-NGO.php" role="form">
+            <form id="contact-form" method="POST" action="contact.php" role="form">
               <div class="toasts"></div>
               <div class="form-row">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                     <label for="email" style="display:none"></label>
                     <input id="email" name="email" type="email" class="form-control form-control-lg" placeholder="Email...">
+                    <input type="hidden" id="subscriptionType" name="subscriptionType" value="NGO">
                 </div>
                 <div class="col-12 col-md-3">
                     <button type="submit" class="btn btn-block btn-lg btn-primary">S'inscrire</button>
@@ -199,7 +200,7 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery script for the subscribtion form-->
-    <script src="js/contact-ngo.js"></script>
+    <script src="js/contact.js"></script>
   </body>
 
 </html>

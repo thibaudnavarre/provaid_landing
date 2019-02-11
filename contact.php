@@ -21,9 +21,11 @@ require 'vendor/autoload.php';
 
 
 // an email address that will be in the From field of the email.
-$fromEmail = $_POST["email"];
+$subscriptionType = $_POST["subscriptionType"];
+$subscriptionEmail = $_POST["email"];
 
-$messageBody = $_POST["email"];
+$hashedEmail = hash('sha256', $subscriptionEmail);
+$messageBody = $subscriptionType.",".$subscriptionEmail.",".$hashedEmail;
 // smtp credentials and server
 
 $smtpHost = 'smtp.gmail.com';
@@ -50,7 +52,7 @@ try{
 
     $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
     $mail->addAddress('contact.provaid@gmail.com'); // destinataire
-    $mail->Subject = 'Provaid new volunteer';
+    $mail->Subject = 'New Provaid subscription';
     $mail->Body = $messageBody;
 
     $mail->send();
