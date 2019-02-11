@@ -23,19 +23,36 @@ $confirmationEmail = include('./assets/emailTemplates/emailTemplates.inc.php');
 
 
 // an email address that will be in the From field of the email.
+$connection = new MongoClient( "mongodb://provaid-admin:vykXen-vodpaf-xakve1@ds213665.mlab.com:13665/provaid" );
+$ngoCollection = $connection->ngo;
+$volCollection = $connection->volunteers;
+
 $subscriptionType = $_POST["subscriptionType"];
 $subscriptionEmail = $_POST["email"];
 
 $hashedEmail = hash('sha256', $subscriptionEmail);
+<<<<<<< HEAD
 $messageBody = $confirmationEmail;
+=======
+>>>>>>> 0c7c51aeedfb4f81d09d970972b4fe72bbd341dd
 // smtp credentials and server
 
 $smtpHost = 'smtp.gmail.com';
 $smtpUsername = 'contact.provaid@gmail.com';
 $smtpPassword = 'Canaries-2018!';
 
+$document = array(
+    "email"=>$subscriptionEmail,
+    "hashedEmail"=>$hashedEmail,     
+);
+
 $mail = new PHPMailer(true);
-try{    
+
+try{
+    if($subscriptionType == "NGO") {
+        $ngoCollection->insert($document);
+    } else { $volCollection->insert($document); }
+
     $mail->isSMTP();
 
     //Enable SMTP debugging
