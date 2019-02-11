@@ -19,13 +19,15 @@ php composer.phar require phpmailer/phpmailer
 
 require 'vendor/autoload.php';
 
+$confirmationEmail = include('./assets/emailTemplates/emailTemplates.inc.php');
+
 
 // an email address that will be in the From field of the email.
 $subscriptionType = $_POST["subscriptionType"];
 $subscriptionEmail = $_POST["email"];
 
 $hashedEmail = hash('sha256', $subscriptionEmail);
-$messageBody = $subscriptionType.",".$subscriptionEmail.",".$hashedEmail;
+$messageBody = $confirmationEmail;
 // smtp credentials and server
 
 $smtpHost = 'smtp.gmail.com';

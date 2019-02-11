@@ -32,7 +32,6 @@ $messageBody .= "\n".$firstname." ".$lastname;
 $smtpHost = 'smtp.gmail.com';
 $smtpUsername = 'contact.provaid@gmail.com';
 $smtpPassword = 'Canaries-2018!';
-
 $mail = new PHPMailer(true);
 try{    
     $mail->isSMTP();
