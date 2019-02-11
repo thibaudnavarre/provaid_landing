@@ -19,8 +19,9 @@ php composer.phar require phpmailer/phpmailer
 
 require 'vendor/autoload.php';
 
-$confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html');
-
+$confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
+$confirmationEmail .= "http://www.google.com"; // A remplacer par l'url de désincription
+$confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
 
 // an email address that will be in the From field of the email.
 /*$connection = new MongoClient( "mongodb://provaid-admin:vykXen-vodpaf-xakve1@ds213665.mlab.com:13665/provaid" );
