@@ -34,6 +34,7 @@ nav{
   top: 0;
   width: 100%;
   background: #00000000;
+  z-index: 3;
 }
 nav a{
   color: #FFF;
@@ -215,6 +216,23 @@ div.change-role a{
 .form-control:focus{
   border-color: #ced4da;
   box-shadow: none;
+}
+
+.form-check{
+  text-align: left
+}
+.form-check-label{
+  padding-left: 30px;
+  padding-right: 0px;
+}
+.form-check-label a {
+  text-decoration: underline;
+  color: #8BC34A;
+}
+.form-check-input{
+  position: absolute;
+  margin-left: 0.1rem;
+  margin-top: 0.4rem;
 }
 
 footer.footer {
