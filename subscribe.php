@@ -19,38 +19,57 @@ php composer.phar require phpmailer/phpmailer
 
 require 'vendor/autoload.php';
 
+// local DB info
+$serverName = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "provaid";
+
+// DB connection
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} 
+catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+// type of the subscription (ngo or vol)
+$subscriptionType = $_POST["subscriptionType"];
+// subscription email address that will be in the From field of the email.
+$subscriptionEmail = $_POST["email"];
+// hashed subscription email to secure unsubscribe feature
+$hashedEmail = hash('sha256', $subscriptionEmail);
+// confirmation email content
+$messageBody = $confirmationEmail;
+
 $confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
 $confirmationEmail .= "http://www.google.com"; // A remplacer par l'url de désincription
+//exemple de lien de désinscription : http://localhost:3000/unsubscribe.html?type=ngo&value=87924606b4131a8aceeeae8868531fbb9712aaa07a5d3a756b26ce0f5d6ca674
 $confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
 
-// an email address that will be in the From field of the email.
-/*$connection = new MongoClient( "mongodb://provaid-admin:vykXen-vodpaf-xakve1@ds213665.mlab.com:13665/provaid" );
-$ngoCollection = $connection->ngo;
-$volCollection = $connection->volunteers;*/
+// insert email and hashedEmail into DB depending on subscription type
+try {
+    $sql = "INSERT INTO $subscriptionType (email, hashedemail) VALUES ('$subscriptionEmail', '$hashedEmail')";
+    $conn->exec($sql);
+    echo "New record created successfully";
+} 
+catch(PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
+}
 
-$subscriptionType = $_POST["subscriptionType"];
-$subscriptionEmail = $_POST["email"];
+// close DB connection
+$conn = null;
 
-$hashedEmail = hash('sha256', $subscriptionEmail);
-$messageBody = $confirmationEmail;
 // smtp credentials and server
-
 $smtpHost = 'smtp.gmail.com';
 $smtpUsername = 'contact.provaid@gmail.com';
 $smtpPassword = 'Canaries-2018!';
 
-$document = array(
-    "email"=>$subscriptionEmail,
-    "hashedEmail"=>$hashedEmail,     
-);
-
 $mail = new PHPMailer(true);
 
-try{
-    /*if($subscriptionType == "NGO") {
-        $ngoCollection->insert($document);
-    } else { $volCollection->insert($document); }*/
-
+/*try{
     $mail->isSMTP();
 
     //Enable SMTP debugging
@@ -77,5 +96,4 @@ try{
 
 } catch(Exception $e){
     echo '404', $mail->ErrorInfo;
-}
-
+}*/

@@ -19,18 +19,44 @@ php composer.phar require phpmailer/phpmailer
 
 require 'vendor/autoload.php';
 
+// local DB info
+$serverName = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "provaid";
 
-// an email address that will be in the From field of the email.
-$messageBody = $_GET['value'];
+// DB connection
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} 
+catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+// get the type of subscription
+$type = $_GET['type'];
+// get the ash value
+$hash = $_GET['hash'];
+
+// delete DB record depending on subscription type
+try {
+    $sql = "DELETE FROM $type WHERE hashedemail='$hash'";
+    $conn->exec($sql);
+    echo "Record deleted successfully";
+} 
+catch(PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
+}
 
 // smtp credentials and server
-
 $smtpHost = 'smtp.gmail.com';
 $smtpUsername = 'contact.provaid@gmail.com';
 $smtpPassword = 'Canaries-2018!';
 
 $mail = new PHPMailer(true);
-try{    
+/*try{    
     $mail->isSMTP();
 
     //Enable SMTP debugging
@@ -57,5 +83,5 @@ try{
 
 } catch(Exception $e){
     echo '404', $mail->ErrorInfo;
-}
+}*/
 

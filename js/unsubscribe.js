@@ -20,13 +20,14 @@ $(function () {
         };
 
         var url = "../unsubscribe.php";
+        var type = getUrlParameter("type");
         var hash = getUrlParameter("value");
 
         // GET values in the background the the script URL
         $.ajax({
             type: 'GET',
             url: url,
-            data: 'value='+hash,
+            data: 'type='+type+'&'+'hash='+hash,
             success: function (response_code)
             {
                 // response_code = html response that contact.php returns
