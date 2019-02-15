@@ -20,10 +20,16 @@ php composer.phar require phpmailer/phpmailer
 require 'vendor/autoload.php';
 
 // local DB info
-$serverName = "localhost";
+/*$serverName = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "provaid";
+$dbname = "provaid";*/
+
+// ovh DB info
+$serverName = "provaidcsdadmin.mysql.db";
+$username = "provaidcsdadmin";
+$password = "xBgfCTA6AnnN8Mrb";
+$dbname = "provaidcsdadmin";
 
 // DB connection
 try {
