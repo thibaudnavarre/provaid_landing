@@ -37,7 +37,7 @@ catch(PDOException $e) {
 
 // type of the subscription (ngo or vol)
 $subscriptionType = $_POST["subscriptionType"];
-// subscription email address that will be in the From field of the email.
+// subscription email address that will be in the To field of the email.
 $subscriptionEmail = $_POST["email"];
 // hashed subscription email to secure unsubscribe feature
 $hashedEmail = hash('sha256', $subscriptionEmail);
@@ -62,12 +62,12 @@ catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
 
-// close DB connection
+// Close DB connection
 $conn = null;
 
 if ($SQLconfirmation == true) {
     
-    // smtp credentials and server
+    // SMTP credentials and server
     $smtpHost = 'smtp.gmail.com';
     $smtpUsername = 'contact.provaid@gmail.com';
     $smtpPassword = 'Canaries-2018!';
@@ -92,9 +92,9 @@ if ($SQLconfirmation == true) {
         $mail->Password = $smtpPassword;
     
         $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
-        $mail->addAddress('contact.provaid@gmail.com'); // destinataire
+        $mail->addAddress($subscriptionEmail); // Destinataire
         $mail->Subject = 'New Provaid subscription';
-        $mail->Body = $messageBody;
+        $mail->Body = $confirmationEmail;
         $mail->isHTML(true);
         $mail->send();
         echo '200';
