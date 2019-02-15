@@ -49,39 +49,3 @@ try {
 catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
-
-// smtp credentials and server
-$smtpHost = 'smtp.gmail.com';
-$smtpUsername = 'contact.provaid@gmail.com';
-$smtpPassword = 'Canaries-2018!';
-
-$mail = new PHPMailer(true);
-/*try{    
-    $mail->isSMTP();
-
-    //Enable SMTP debugging
-    // 0 = off (for production use)
-    // 1 = client messages
-    // 2 = client and server messages
-    $mail->SMTPDebug = 0;
-    $mail->Debugoutput = 'html';
-    $mail->Host = $smtpHost;
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-
-    $mail->Username = $smtpUsername;
-    $mail->Password = $smtpPassword;
-
-    $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
-    $mail->addAddress('contact.provaid@gmail.com'); // destinataire
-    $mail->Subject = 'New Provaid unsubscription';
-    $mail->Body = $messageBody;
-
-    $mail->send();
-    echo '200';
-
-} catch(Exception $e){
-    echo '404', $mail->ErrorInfo;
-}*/
-

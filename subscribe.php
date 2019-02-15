@@ -45,15 +45,18 @@ $hashedEmail = hash('sha256', $subscriptionEmail);
 $messageBody = $confirmationEmail;
 
 $confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
-$confirmationEmail .= "http://www.google.com"; // A remplacer par l'url de désincription
-//exemple de lien de désinscription : http://localhost:3000/unsubscribe.html?type=ngo&value=87924606b4131a8aceeeae8868531fbb9712aaa07a5d3a756b26ce0f5d6ca674
+$confirmationEmail .= "https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail"; // A remplacer par l'url de désincription
+//exemple de lien de désinscription : https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail
 $confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
 
+$SQLconfirmation = false;
 // insert email and hashedEmail into DB depending on subscription type
 try {
     $sql = "INSERT INTO $subscriptionType (email, hashedemail) VALUES ('$subscriptionEmail', '$hashedEmail')";
     $conn->exec($sql);
     echo "New record created successfully";
+    $SQLconfirmation = true;
+
 } 
 catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
@@ -62,38 +65,41 @@ catch(PDOException $e) {
 // close DB connection
 $conn = null;
 
-// smtp credentials and server
-$smtpHost = 'smtp.gmail.com';
-$smtpUsername = 'contact.provaid@gmail.com';
-$smtpPassword = 'Canaries-2018!';
-
-$mail = new PHPMailer(true);
-
-/*try{
-    $mail->isSMTP();
-
-    //Enable SMTP debugging
-    // 0 = off (for production use)
-    // 1 = client messages
-    // 2 = client and server messages
-    $mail->SMTPDebug = 0;
-    $mail->Debugoutput = 'html';
-    $mail->Host = $smtpHost;
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-
-    $mail->Username = $smtpUsername;
-    $mail->Password = $smtpPassword;
-
-    $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
-    $mail->addAddress('contact.provaid@gmail.com'); // destinataire
-    $mail->Subject = 'New Provaid subscription';
-    $mail->Body = $messageBody;
-    $mail->isHTML(true);
-    $mail->send();
-    echo '200';
-
-} catch(Exception $e){
-    echo '404', $mail->ErrorInfo;
-}*/
+if ($SQLconfirmation == true) {
+    
+    // smtp credentials and server
+    $smtpHost = 'smtp.gmail.com';
+    $smtpUsername = 'contact.provaid@gmail.com';
+    $smtpPassword = 'Canaries-2018!';
+    
+    $mail = new PHPMailer(true);
+    
+    try{
+        $mail->isSMTP();
+    
+        //Enable SMTP debugging
+        // 0 = off (for production use)
+        // 1 = client messages
+        // 2 = client and server messages
+        $mail->SMTPDebug = 0;
+        $mail->Debugoutput = 'html';
+        $mail->Host = $smtpHost;
+        $mail->Port = 587;
+        $mail->SMTPSecure = 'tls';
+        $mail->SMTPAuth = true;
+    
+        $mail->Username = $smtpUsername;
+        $mail->Password = $smtpPassword;
+    
+        $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
+        $mail->addAddress('contact.provaid@gmail.com'); // destinataire
+        $mail->Subject = 'New Provaid subscription';
+        $mail->Body = $messageBody;
+        $mail->isHTML(true);
+        $mail->send();
+        echo '200';
+    
+    } catch(Exception $e){
+        echo '404', $mail->ErrorInfo;
+    }
+}
