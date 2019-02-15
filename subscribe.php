@@ -26,14 +26,16 @@ $password = "root";
 $dbname = "provaid";*/
 
 // ovh DB info
-$serverName = "provaidcsdadmin.mysql.db";
+$servername = "provaidcsdadmin.mysql.db";
 $username = "provaidcsdadmin";
 $password = "xBgfCTA6AnnN8Mrb";
 $dbname = "provaidcsdadmin";
 
+$dbConnect = "mysql:dbname=".$dbname.";host=".$servername;
+
 // DB connection
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO($dbConnect, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 } 
@@ -42,18 +44,20 @@ catch(PDOException $e) {
 }
 
 // type of the subscription (ngo or vol)
-$subscriptionType = $_POST["subscriptionType"];
+//$subscriptionType = $_POST["subscriptionType"];
+$subscriptionType = "vol";
 // subscription email address that will be in the To field of the email.
-$subscriptionEmail = $_POST["email"];
+//$subscriptionEmail = $_POST["email"];
+$subscriptionEmail = "navarre.thibaud@gmail.com";
 // hashed subscription email to secure unsubscribe feature
 $hashedEmail = hash('sha256', $subscriptionEmail);
-// confirmation email content
-$messageBody = $confirmationEmail;
 
+// confirmation email content
 $confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
-$confirmationEmail .= "https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail"; // A remplacer par l'url de désincription
+$confirmationEmail .= "https://www.provaid.com/unsubscribe.html?type=".$subscriptionType."&value=".$hashedEmail; // A remplacer par l'url de désincription
 //exemple de lien de désinscription : https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail
 $confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
+
 
 $SQLconfirmation = false;
 // insert email and hashedEmail into DB depending on subscription type
@@ -62,8 +66,7 @@ try {
     $conn->exec($sql);
     echo "New record created successfully";
     $SQLconfirmation = true;
-
-} 
+}
 catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
@@ -81,13 +84,13 @@ if ($SQLconfirmation == true) {
     $mail = new PHPMailer(true);
     
     try{
-        $mail->isSMTP();
+        //mail->isSMTP();
     
         //Enable SMTP debugging
         // 0 = off (for production use)
         // 1 = client messages
         // 2 = client and server messages
-        $mail->SMTPDebug = 0;
+        /*$mail->SMTPDebug = 0;
         $mail->Debugoutput = 'html';
         $mail->Host = $smtpHost;
         $mail->Port = 587;
@@ -102,7 +105,16 @@ if ($SQLconfirmation == true) {
         $mail->Subject = 'New Provaid subscription';
         $mail->Body = $confirmationEmail;
         $mail->isHTML(true);
+        $mail->send();*/
+        $mail->IsMail();
+        $mail->isHTML(true);
+        $mail->From = "contact@provaid.com";
+        $mail->FromName = "Provaid.com";
+        $mail->Subject = 'New Provaid Subscription';
+        $mail->Body = $confirmationEmail;
+        $mail->addAddress($subscriptionEmail);
         $mail->send();
+
         echo '200';
     
     } catch(Exception $e){

@@ -26,14 +26,16 @@ $password = "root";
 $dbname = "provaid";*/
 
 // ovh DB info
-$serverName = "provaidcsdadmin.mysql.db";
+$servername = "provaidcsdadmin.mysql.db";
 $username = "provaidcsdadmin";
 $password = "xBgfCTA6AnnN8Mrb";
 $dbname = "provaidcsdadmin";
 
+$dbConnect = "mysql:dbname=".$dbname.";host=".$servername;
+
 // DB connection
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO($dbConnect, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 } 
@@ -50,7 +52,8 @@ $hash = $_GET['hash'];
 try {
     $sql = "DELETE FROM $type WHERE hashedemail='$hash'";
     $conn->exec($sql);
-    echo "Record deleted successfully";
+    http_response_code(200);
+    echo '200';
 } 
 catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
