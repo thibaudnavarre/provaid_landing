@@ -31,6 +31,7 @@ $(function () {
             success: function (response_code)
             {
                 // response_code = html response that contact.php returns
+                console.log("UNSUBSCRIBE.JS >  Responde code HTML : \n" + response_code);
                 if (response_code == 200) {
                     
                     var messageText = "Désinscription effectuée !";

@@ -53,7 +53,7 @@ $subscriptionEmail = "navarre.thibaud@gmail.com";
 $hashedEmail = hash('sha256', $subscriptionEmail);
 
 // confirmation email content
-$confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
+$confirmationEmail = file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 0, 37022); // Nbr de caractères dans le fichier +19, pourquoi ??? mais ca marche
 $confirmationEmail .= "https://www.provaid.com/unsubscribe.html?type=".$subscriptionType."&value=".$hashedEmail; // A remplacer par l'url de désincription
 //exemple de lien de désinscription : https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail
 $confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
