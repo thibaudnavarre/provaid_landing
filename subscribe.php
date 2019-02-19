@@ -48,6 +48,7 @@ catch(PDOException $e) {
 $subscriptionType = "vol";
 // subscription email address that will be in the To field of the email.
 //$subscriptionEmail = $_POST["email"];
+//$subscriptionEmail = "test-90smr@mail-tester.com";
 $subscriptionEmail = "navarre.thibaud@gmail.com";
 // hashed subscription email to secure unsubscribe feature
 $hashedEmail = hash('sha256', $subscriptionEmail);
@@ -77,42 +78,35 @@ $conn = null;
 if ($SQLconfirmation == true) {
     
     // SMTP credentials and server
-    $smtpHost = 'smtp.gmail.com';
-    $smtpUsername = 'contact.provaid@gmail.com';
-    $smtpPassword = 'Canaries-2018!';
+    $smtpHost = 'SSL0.OVH.NET';
+    $smtpUsername = 'contact@provaid.com';
+    $smtpPassword = 'ftB3oEGcJLSM';
     
     $mail = new PHPMailer(true);
     
     try{
-        //mail->isSMTP();
+        $mail->isSMTP();
     
         //Enable SMTP debugging
         // 0 = off (for production use)
         // 1 = client messages
         // 2 = client and server messages
-        /*$mail->SMTPDebug = 0;
-        $mail->Debugoutput = 'html';
+        //$mail->SMTPDebug = 0;
+        //$mail->Debugoutput = 'html';
+        //$mail->SMTPSecure = 'ssl';
         $mail->Host = $smtpHost;
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
         $mail->SMTPAuth = true;
-    
         $mail->Username = $smtpUsername;
         $mail->Password = $smtpPassword;
-    
-        $mail->setFrom('contact.provaid@gmail.com','Provaid'); // Emetteur
+        $mail->Port = 465;
+        
+        $mail->setFrom('contact@provaid.com','Provaid Contact'); // Emetteur
         $mail->addAddress($subscriptionEmail); // Destinataire
-        $mail->Subject = 'New Provaid subscription';
-        $mail->Body = $confirmationEmail;
+        $mail->addReplyTo('contact@provaid.com','Provaid Contact');
         $mail->isHTML(true);
-        $mail->send();*/
-        $mail->IsMail();
-        $mail->isHTML(true);
-        $mail->From = "contact@provaid.com";
-        $mail->FromName = "Provaid.com";
-        $mail->Subject = 'New Provaid Subscription';
+        $mail->Subject = 'Bienvenue chez les Provaiders';
         $mail->Body = $confirmationEmail;
-        $mail->addAddress($subscriptionEmail);
+        $mail->AltBody = "Bienvenue chez les Provaiders";
         $mail->send();
 
         echo '200';
