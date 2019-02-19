@@ -15,9 +15,12 @@ $(function () {
             {
                 
                 // response_code = html response that contact.php returns
+                //console.log("LE CODE");
+                //console.log(response_code);
+
                 if (response_code == 200) {
                     console.log("Subscription is a success !");
-                    var messageText = "Inscription enregistrée !";
+                    var messageText = "Inscription enregistrée ! \n Si vous n'avez pas reçu l'Email, vérifiez votre dossier courrier indésirable ou spam.";
                     var messageAlert = "alert-success";
                 }
                 else{

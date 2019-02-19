@@ -37,19 +37,18 @@ $dbConnect = "mysql:dbname=".$dbname.";host=".$servername;
 try {
     $conn = new PDO($dbConnect, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+    //echo "Connected successfully";
 } 
 catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
 // type of the subscription (ngo or vol)
-//$subscriptionType = $_POST["subscriptionType"];
-$subscriptionType = "vol";
+$subscriptionType = $_POST["subscriptionType"];
 // subscription email address that will be in the To field of the email.
-//$subscriptionEmail = $_POST["email"];
-//$subscriptionEmail = "test-90smr@mail-tester.com";
-$subscriptionEmail = "navarre.thibaud@gmail.com";
+$subscriptionEmail = $_POST["email"];
+// feedback email
+$feedbackEmailAddress = "contact.provaid@gmail.com";
 // hashed subscription email to secure unsubscribe feature
 $hashedEmail = hash('sha256', $subscriptionEmail);
 
@@ -59,13 +58,16 @@ $confirmationEmail .= "https://www.provaid.com/unsubscribe.html?type=".$subscrip
 //exemple de lien de désinscription : https://www.provaid.com/unsubscribe.html?type=$subscriptionType&value=$hashedEmail
 $confirmationEmail .= file_get_contents('./assets/emailTemplates/ProvaidConfirmation.html', FALSE, NULL, 37022);
 
-
+// variable to check if SQL insert is succesfull
 $SQLconfirmation = false;
+// variable to check if mail sending is successfull
+$mailConfirmation = false;
+
 // insert email and hashedEmail into DB depending on subscription type
 try {
     $sql = "INSERT INTO $subscriptionType (email, hashedemail) VALUES ('$subscriptionEmail', '$hashedEmail')";
     $conn->exec($sql);
-    echo "New record created successfully";
+    //echo "New record created successfully";
     $SQLconfirmation = true;
 }
 catch(PDOException $e) {
@@ -75,7 +77,7 @@ catch(PDOException $e) {
 // Close DB connection
 $conn = null;
 
-if ($SQLconfirmation == true) {
+if ($SQLconfirmation) {
     
     // SMTP credentials and server
     $smtpHost = 'SSL0.OVH.NET';
@@ -85,33 +87,58 @@ if ($SQLconfirmation == true) {
     $mail = new PHPMailer(true);
     
     try{
-        $mail->isSMTP();
-    
+        
         //Enable SMTP debugging
         // 0 = off (for production use)
         // 1 = client messages
         // 2 = client and server messages
-        //$mail->SMTPDebug = 0;
         //$mail->Debugoutput = 'html';
-        //$mail->SMTPSecure = 'ssl';
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
         $mail->Host = $smtpHost;
-        $mail->SMTPAuth = true;
         $mail->Username = $smtpUsername;
         $mail->Password = $smtpPassword;
         $mail->Port = 465;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
         
         $mail->setFrom('contact@provaid.com','Provaid Contact'); // Emetteur
         $mail->addAddress($subscriptionEmail); // Destinataire
         $mail->addReplyTo('contact@provaid.com','Provaid Contact');
-        $mail->isHTML(true);
         $mail->Subject = 'Bienvenue chez les Provaiders';
         $mail->Body = $confirmationEmail;
         $mail->AltBody = "Bienvenue chez les Provaiders";
+        $mail->isHTML(true);
         $mail->send();
 
+        $mailConfirmation = true;
         echo '200';
     
     } catch(Exception $e){
         echo '404', $mail->ErrorInfo;
     }
-}
+
+} if ($mailConfirmation) {
+    try {
+        $feedbackEmail = new PHPMailer(true);
+        $feedbackEmail->isSMTP();
+        $feedbackEmail->SMTPDebug = 0;
+        $feedbackEmail->Host = $smtpHost;
+        $feedbackEmail->Username = $smtpUsername;
+        $feedbackEmail->Password = $smtpPassword;
+        $feedbackEmail->Port = 465;
+        $feedbackEmail->SMTPAuth = true;
+        $feedbackEmail->SMTPSecure = 'ssl';
+        
+        $feedbackEmail->setFrom('contact@provaid.com','Provaid Contact'); // Emetteur
+        $feedbackEmail->addAddress($feedbackEmailAddress); // Destinataire
+        $feedbackEmail->Subject = "New Provaid ".$subscriptionType." Subscription";
+        $feedbackEmail->Body = "A new ".$subscriptionType." has just signed in!";
+        $feedbackEmail->AltBody = "A new ".$subscriptionType." has just signed in!";
+        $feedbackEmail->isHTML(true);
+        $feedbackEmail->send();
+
+    } catch(Exception $e){
+        $mail->ErrorInfo;
+    }
+}  

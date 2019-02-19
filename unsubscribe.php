@@ -37,7 +37,7 @@ $dbConnect = "mysql:dbname=".$dbname.";host=".$servername;
 try {
     $conn = new PDO($dbConnect, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+    //echo "Connected successfully";
 } 
 catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -52,7 +52,6 @@ $hash = $_GET['hash'];
 try {
     $sql = "DELETE FROM $type WHERE hashedemail='$hash'";
     $conn->exec($sql);
-    http_response_code(200);
     echo '200';
 } 
 catch(PDOException $e) {
