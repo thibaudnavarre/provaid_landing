@@ -17,7 +17,7 @@ $(function () {
                 // response_code = html response that contact.php returns
                 if (response_code == 200) {
                     
-                    var messageText = "Inscription enregistrée !";
+                    var messageText = "Message envoyé !";
                     var messageAlert = "alert-success";
                 }
                 else{
