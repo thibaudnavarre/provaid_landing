@@ -1,6 +1,7 @@
 <?php
 
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 /*
 THIS FILE USES PHPMAILER INSTEAD OF THE PHP MAIL() FUNCTION
