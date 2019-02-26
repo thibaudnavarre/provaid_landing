@@ -1,201 +1,207 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="Trouver des volontaires pour une mission humanitaire.">
-		<meta name="author" content="Provaid">
-		<link rel="alternate" hreflang="fr" href="http://wwww.Provaid.com/fr/subscribe-ngo.html">
-		<link rel="alternate" hreflang="en" href="#">
-		<link rel="alternate" hreflang="es" href="#">
-		<title>Provaid - Humanitaire et volontariat international</title>
-		<link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="./assets/favicon/favicon.png" type="image/png">
-		<link rel="icon" sizes="32x32" href="./assets/favicon/favicon-32.png" type="image/png">
-		<link rel="icon" sizes="64x64" href="./assets/favicon/favicon-64.png" type="image/png">
-		<link rel="icon" sizes="96x96" href="./assets/favicon/favicon-96.png" type="image/png">
-		<!-- Bootstrap core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Trouver des volontaires pour une mission humanitaire.">
+	<meta name="author" content="Provaid">
+	<link rel="alternate" hreflang="fr" href="http://wwww.Provaid.com/fr/subscribe-ngo.html">
+	<link rel="alternate" hreflang="en" href="#">
+	<link rel="alternate" hreflang="es" href="#">
+	<title>Provaid - Humanitaire et volontariat international</title>
+	<link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./assets/favicon/favicon.png" type="image/png">
+	<link rel="icon" sizes="32x32" href="./assets/favicon/favicon-32.png" type="image/png">
+	<link rel="icon" sizes="64x64" href="./assets/favicon/favicon-64.png" type="image/png">
+	<link rel="icon" sizes="96x96" href="./assets/favicon/favicon-96.png" type="image/png">
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- Custom fonts for this template -->
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-		 type="text/css">
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+		type="text/css">
 
-		<!-- Custom styles for this template -->
-		<link href="css/landing-page.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/landing-page.css" rel="stylesheet">
 
-	</head>
+</head>
 
-	<body>
+<body>
 
-
-
-		<!-- Masthead -->
-		<header class="masthead text-white text-center" style="background-image:url('./assets/img/asia-child.jpg');">
-			<!-- Navigation -->
-			<nav class="navbar navbar-dark static-top">
-				<div class="container">
-					<h1 class="navbar-brand"><a href="./index.html">Prov<i>a</i>id<i>.com</i></a></h1>
-					<p><a href="#">EN</a> &middot <a href="#" class="active">FR</a> &middot <a href="#">ES</a></p>
-				</div>
-			</nav>
+	<!-- Masthead -->
+	<header class="masthead text-white text-center" style="background-image:url('./assets/img/asia-child.jpg');">
+		<!-- Navigation -->
+		<nav class="navbar navbar-dark static-top">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-10 mx-auto">
-						<h1 class="mb-5">Vous êtes une ONG ou une association ?</h1>
-						<p class="head-description">
-							Notre plateforme sera bientôt prête !
-							Inscivez-vous pour rencontrer nos premiers prov<i>a</i>iders !
+				<h1 class="navbar-brand"><a href="./index.html">Prov<i>a</i>id<i>.com</i></a></h1>
+				<p><a href="#">EN</a> &middot <a href="#" class="active">FR</a> &middot <a href="#">ES</a></p>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 mx-auto">
+					<h1 class="mb-5">Vous êtes une ONG ou une association ?</h1>
+					<p class="head-description">
+						Notre plateforme sera bientôt prête !
+						Inscivez-vous pour rencontrer nos premiers prov<i>a</i>iders !
 
-							<!--Quelques soient vos compétences, venez aider ceux qui ont besoin de vous.-->
+						<!--Quelques soient vos compétences, venez aider ceux qui ont besoin de vous.-->
+					</p>
+				</div>
+			</div>
+			<div class="row cta">
+				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+					<form id="contact-form" method="POST" action="subscribe.php" role="form">
+						<div class="toasts"></div>
+						<div class="form-row">
+							<div class="col-12 col-md-9 mb-2 mb-md-0">
+								<label for="email" style="display:none"></label>
+								<input id="email" name="email" type="email" class="form-control form-control-lg"
+									placeholder="Email..." required="required">
+								<input type="hidden" id="subscriptionType" name="subscriptionType" value="ngo">
+							</div>
+							<div class="col-12 col-md-3">
+								<button type="submit" class="btn btn-block btn-lg btn-primary">S'inscrire</button>
+							</div>
+						</div>
+						<div class="form-check">
+							<label for="consent" class="form-check-label col-10 col-md-9 col-lg-8">J'accepte la <a
+									href="./privacy-policy.html">Politique
+									de Confidentialité</a> de Provaid</label>
+							<input type="checkbox" class="form-check-input col-1" id="consent" required="required">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row change-role">
+				<div class="col-md-10 mx-auto mt-4">
+					<a href="./subscribe-volunteer.html">Je suis un volontaire</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Icons Grid -->
+	<section class="features-icons bg-light text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+						<div class="features-icons-icon d-flex">
+							<img src="./assets/icons/world.svg" alt="International" height="87px" width="100px" />
+						</div>
+						<h2>Internationale</h2>
+						<p class="lead mb-0">Trouvez des missions adaptées à vos compétences dans le monde entier.</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+						<div class="features-icons-icon d-flex">
+							<img src="./assets/icons/network.svg" alt="Centralisé" height="87px" width="100px" />
+						</div>
+						<h3>Centralisée</h3>
+						<p class="lead mb-0">Nous avons pour mission de recenser l'ensemble des missions humanitaires.
 						</p>
 					</div>
 				</div>
-				<div class="row cta">
-					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-						<form id="contact-form" method="POST" action="subscribe.php" role="form">
-							<div class="toasts"></div>
-							<div class="form-row">
-								<div class="col-12 col-md-9 mb-2 mb-md-0">
-									<label for="email" style="display:none"></label>
-									<input id="email" name="email" type="email" class="form-control form-control-lg" placeholder="Email..."
-									 required="required">
-									<input type="hidden" id="subscriptionType" name="subscriptionType" value="ngo">
-								</div>
-								<div class="col-12 col-md-3">
-									<button type="submit" class="btn btn-block btn-lg btn-primary">S'inscrire</button>
-								</div>
-							</div>
-							<div class="form-check">
-								<label for="consent" class="form-check-label col-10 col-md-9 col-lg-8">J'accepte la <a href="./privacy-policy.html">Politique
-										de Confidentialité</a> de Provaid</label>
-								<input type="checkbox" class="form-check-input col-1" id="consent" required="required">
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="row change-role">
-					<div class="col-md-10 mx-auto mt-4">
-						<a href="./subscribe-volunteer.html">Je suis un volontaire</a>
-					</div>
-				</div>
-			</div>
-		</header>
-
-		<!-- Icons Grid -->
-		<section class="features-icons bg-light text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-							<div class="features-icons-icon d-flex">
-								<img src="./assets/icons/world.svg" alt="International" height="87px" width="100px" />
-							</div>
-							<h2>Internationale</h2>
-							<p class="lead mb-0">Trouvez des missions adaptées à vos compétences dans le monde entier.</p>
+				<div class="col-lg-4">
+					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
+						<div class="features-icons-icon d-flex">
+							<img src="./assets/icons/safe.svg" alt="Sécurisé" height="87px" width="100px" />
 						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-							<div class="features-icons-icon d-flex">
-								<img src="./assets/icons/network.svg" alt="Centralisé" height="87px" width="100px" />
-							</div>
-							<h3>Centralisée</h3>
-							<p class="lead mb-0">Nous avons pour mission de recenser l'ensemble des missions humanitaires.</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="features-icons-item mx-auto mb-0 mb-lg-3">
-							<div class="features-icons-icon d-flex">
-								<img src="./assets/icons/safe.svg" alt="Sécurisé" height="87px" width="100px" />
-							</div>
-							<h3>Sécurisée</h3>
-							<p class="lead mb-0">Nous vous garantissons des missions auprès d'ONG reconnues pour la qualité de leur
-								travail.</p>
-						</div>
+						<h3>Sécurisée</h3>
+						<p class="lead mb-0">Nous vous garantissons des missions auprès d'ONG reconnues pour la qualité
+							de leur
+							travail.</p>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- Image Showcases -->
-		<section class="showcase">
-			<div class="container-fluid p-0">
-				<div class="row no-gutters">
-					<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('./assets/img/india.jpg');"></div>
-					<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-						<h2>Une plateforme internationale</h2>
-						<p class="lead mb-0">Parce que la solidarité ne doit pas connaître de frontière, nous opérons dans le monde
-							entier pour mettre en relation des volontaires et des associations. </p>
-					</div>
-				</div>
-				<div class="row no-gutters">
-					<div class="col-lg-6 text-white showcase-img" style="background-image: url('./assets/img/desert.jpg');"></div>
-					<div class="col-lg-6 my-auto showcase-text">
-						<h2>Des ONG locales</h2>
-						<p class="lead mb-0">Afin d'agir au plus près des populations concernées, nous vous mettons en relation
-							avec des ONG et des associations qui connaissent parfaitement le contexte local.</p>
-					</div>
-				</div>
-				<div class="row no-gutters">
-					<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('./assets/img/meditation.jpg');"></div>
-					<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-						<h2>Des volontaires sérieux et impliqués</h2>
-						<p class="lead mb-0">Pour optimiser l'efficacité des missions, nous nous assurons que chaque volontaire est
-							sérieux et motivé. </p>
-					</div>
+		</div>
+	</section>
+
+	<!-- Image Showcases -->
+	<section class="showcase">
+		<div class="container-fluid p-0">
+			<div class="row no-gutters">
+				<div class="col-lg-6 order-lg-2 text-white showcase-img"
+					style="background-image: url('./assets/img/india.jpg');"></div>
+				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+					<h2>Une plateforme internationale</h2>
+					<p class="lead mb-0">Parce que la solidarité ne doit pas connaître de frontière, nous opérons dans
+						le monde
+						entier pour mettre en relation des volontaires et des associations. </p>
 				</div>
 			</div>
-		</section>
-
-
-
-		<!-- Footer -->
-		<footer class="footer bg-light">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-						<ul class="list-inline mb-2">
-							<li class="list-inline-item">
-								<a href="./contact.html">Contact</a>
-							</li>
-							<li class="list-inline-item">&sdot;</li>
-							<li class="list-inline-item">
-								<a href="./privacy-policy.html">Politique de confidentialité</a>
-							</li>
-						</ul>
-						<p class="text-muted small mb-4 mb-lg-0">&copy; Provaid.com 2019. All Rights Reserved.</p>
-					</div>
-					<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item mr-3">
-								<a href="#">
-									<i class="fab fa-facebook fa-2x fa-fw"></i>
-								</a>
-							</li>
-							<li class="list-inline-item mr-3">
-								<a href="#">
-									<i class="fab fa-twitter-square fa-2x fa-fw"></i>
-								</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="#">
-									<i class="fab fa-instagram fa-2x fa-fw"></i>
-								</a>
-							</li>
-						</ul>
-					</div>
+			<div class="row no-gutters">
+				<div class="col-lg-6 text-white showcase-img" style="background-image: url('./assets/img/desert.jpg');">
+				</div>
+				<div class="col-lg-6 my-auto showcase-text">
+					<h2>Des ONG locales</h2>
+					<p class="lead mb-0">Afin d'agir au plus près des populations concernées, nous vous mettons en
+						relation
+						avec des ONG et des associations qui connaissent parfaitement le contexte local.</p>
 				</div>
 			</div>
-		</footer>
+			<div class="row no-gutters">
+				<div class="col-lg-6 order-lg-2 text-white showcase-img"
+					style="background-image: url('./assets/img/meditation.jpg');"></div>
+				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+					<h2>Des volontaires sérieux et impliqués</h2>
+					<p class="lead mb-0">Pour optimiser l'efficacité des missions, nous nous assurons que chaque
+						volontaire est
+						sérieux et motivé. </p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Footer -->
+	<footer class="footer bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+					<ul class="list-inline mb-2">
+						<li class="list-inline-item">
+							<a href="./contact.html">Contact</a>
+						</li>
+						<li class="list-inline-item">&sdot;</li>
+						<li class="list-inline-item">
+							<a href="./privacy-policy.html">Politique de confidentialité</a>
+						</li>
+					</ul>
+					<p class="text-muted small mb-4 mb-lg-0">&copy; Provaid.com 2019. All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item mr-3">
+							<a href="#">
+								<i class="fab fa-facebook fa-2x fa-fw"></i>
+							</a>
+						</li>
+						<li class="list-inline-item mr-3">
+							<a href="#">
+								<i class="fab fa-twitter-square fa-2x fa-fw"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="#">
+								<i class="fab fa-instagram fa-2x fa-fw"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
 
-		<!-- JQuery script for the subscribtion form-->
-		<script src="js/subscribe.js"></script>
-	</body>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- JQuery script for the subscribtion form-->
+	<script src="js/subscribe.js"></script>
+</body>
 
 </html>
